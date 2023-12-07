@@ -80,7 +80,40 @@ sudo systemctl disable containerd.service""",
                         #show_line_numbers=True,
                         theme='dark'
                     ),
+                ),
+                class_name="nes-container is-rounded is-dark with-title",
+                align_items="start",
+                width="100%"
+            ),
+            rx.span(
+                rx.text(
+                    "Docker: ",
+                    rx.span(
+                            "buildx",
+                            color=TextColor.ACCENT.value,
+                        ),
+                    class_name="title"
+                ),
+                rx.span(
+                    """ Steps: """,
+                    rx.code_block(
+"""docker buildx create --name ourbuilder
+docker buildx create use ourbuilder
+docker buildx build --platform linux/amd64 -t mothur_v1_48:latest . --load""",
+                        language="bash",
+                        #show_line_numbers=True,
+                        theme='dark'
+                    ),
+                    "Dockerfile. (the design was quite simple)",
+                    rx.code_block(
+"""FROM ubuntu:23.04
 
+RUN apt-get update
+RUN apt-get install -y wget mothur && rm -rf /var/lib/apt/lists/*""",
+                        language="docker",
+                        show_line_numbers=True,
+                        theme='dark'
+                    ),
                 ),
                 class_name="nes-container is-rounded is-dark with-title",
                 align_items="start",
