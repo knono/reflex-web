@@ -119,6 +119,35 @@ RUN apt-get install -y wget mothur && rm -rf /var/lib/apt/lists/*""",
                 align_items="start",
                 width="100%"
             ),
+            rx.span(
+                rx.text(
+                    "Clam AV: ",
+                    rx.span(
+                            "Usos",
+                            color=TextColor.ACCENT.value,
+                        ),
+                    class_name="title"
+                ),
+                rx.span(
+                    """ Update: """,
+                    rx.code_block(
+"""freshclam -v""",
+                        language="bash",
+                        #show_line_numbers=True,
+                        theme='dark'
+                    ),
+                    "Ejecutarlo",
+                    rx.code_block(
+"clamscan -r --bell -i ./* ",
+                        language="bash",
+                        #show_line_numbers=True,
+                        theme='dark'
+                    ),
+                ),
+                class_name="nes-container is-rounded is-dark with-title",
+                align_items="start",
+                width="100%"
+            ),
         ),
         padding_top=Size.MEDIUM.value,
         style=styles.max_width_style
